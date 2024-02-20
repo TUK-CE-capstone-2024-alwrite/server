@@ -1,5 +1,6 @@
 from flask import Flask
 from .routes import routes_list
+from .database import database as db
 
 def create_app():
   app = Flask(__name__)
@@ -8,7 +9,7 @@ def create_app():
   
   @app.route('/')
   def test():
-    return 'test'
+    return 'hello world!'
   
   return app
   
