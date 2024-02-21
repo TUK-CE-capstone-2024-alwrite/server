@@ -35,11 +35,15 @@ def detect(): # # Using default model
         result = reader.readtext(file)
     
         for (bbox, string, confidence) in result:
+            
+            bbox = [[int(x) for x in point] for point in bbox]
+
             print("filename: '%s', confidence: %.4f, string: '%s'" % (filename, confidence, string))
             result_set.append({
                 'filename': filename,
                 'confidence': float(confidence),  # Convert confidence to float
-                'string': string
+                'string': string,
+                'bbox': bbox
             })
 
     return result_set
