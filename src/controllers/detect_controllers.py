@@ -8,7 +8,7 @@ from datetime import datetime
 import json
 import src.services.detect_service as detect_service
 
-detect_bp = Blueprint(name='detect',import_name=__name__, url_prefix='/detect/')
+detect_bp = Blueprint(name='detect',import_name=__name__, url_prefix='/api/detect/')
 
 @detect_bp.route('/', methods=['POST'])
 def detect() -> str:
