@@ -33,5 +33,6 @@ def detect() -> str:
     # 수신 받은 파일 텍스트 변환
     result = easyocr()
     result = detect_service.detect_route(result)
-    json_result = json.dumps(result, ensure_ascii=False)
-    return json_result
+    # json_result = json.dumps(result, ensure_ascii=False)
+    # return json_result
+    return jsonify(result)
