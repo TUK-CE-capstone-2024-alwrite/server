@@ -1,5 +1,6 @@
+from .controllers.detect_controllers import detect_bp
+
 # routes.py 또는 routes_list 함수
-def routes_list(app, database):
-    @app.route('/some_route')
-    def some_route():
-        return database.db.child('some_path').get().val()
+def routes_list(app):
+    app.register_blueprint(detect_bp)
+    return app

@@ -39,7 +39,7 @@ def detect(): # # Using default model
             result_set.append({
                 'filename': filename,
                 'confidence': float(confidence),  # Convert confidence to float
-                'string': string,
+                'string': string
             })
 
     return result_set
