@@ -34,3 +34,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+EasyOCR/model
+EasyOCR/demo_images
