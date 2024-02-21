@@ -13,7 +13,7 @@ detect_bp = Blueprint(name='detect',import_name=__name__, url_prefix='/api/detec
 @detect_bp.route('/', methods=['POST'])
 def detect() -> str:
     # 파일 수신
-    f = request.files['test']
+    f = request.files['file']
     
     # 저장 폴더 비우기
     folder = 'EasyOCR/demo_images/'
