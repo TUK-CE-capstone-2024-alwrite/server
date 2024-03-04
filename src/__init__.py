@@ -1,16 +1,16 @@
 from flask import Flask
+from flask_cors import CORS
 from .routes import routes_list
-from .database.database import Database
 
 def create_app():
     app = Flask(__name__)
-    database = Database()  # Database 클래스의 인스턴스 생성
+    CORS(app)
 
-    routes_list(app, database)  # routes_list 함수에 데이터베이스 인스턴스를 전달
+    routes_list(app)
 
     @app.route('/')
     def test():
-        return database.db.child('test').get().val()
+        return 'test'
 
     return app
 
