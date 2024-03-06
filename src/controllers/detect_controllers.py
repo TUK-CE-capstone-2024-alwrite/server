@@ -3,8 +3,6 @@ from flask import Blueprint, request
 from flask import jsonify
 from werkzeug.utils import secure_filename
 from EasyOCR.run import detect as easyocr
-from datetime import datetime
-
 import json
 import src.services.detect_service as detect_service
 
