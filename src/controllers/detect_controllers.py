@@ -12,3 +12,8 @@ def detect_multi() -> str:
 def detect_kor() -> str:
     result = detect(language='ko')
     return result
+
+@detect_bp.route('/en', methods=['POST'])
+def detect_kor() -> str:
+    result = detect(language='en')
+    return result
