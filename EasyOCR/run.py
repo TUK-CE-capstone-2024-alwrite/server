@@ -17,13 +17,19 @@ def get_files(path):
     return file_list, len(file_list)
 
 #이미지 텍스트 변환
-def detect_easyocr(): # # Using default model
+def detect_easyocr(language): # # Using default model
     # reader = Reader(['ko'], gpu=True)
 
     # Using custom model
     # 이미지에서 텍스트를 추출하기 위해 reader 객체 생성
-    reader = Reader(['ko','en'], gpu=False,
+    if language == 'multi':
+        reader = Reader(['ko', 'en'], gpu=False,
                     model_storage_directory='EasyOCR/model',
+                    user_network_directory='EasyOCR/user_network_dir',
+                    recog_network='custom')
+    elif language == 'ko':
+        reader = Reader(['ko','en'], gpu=False,
+                    model_storage_directory='EasyOCR/model_kor',
                     user_network_directory='EasyOCR/user_network_dir',
                     recog_network='custom')
 
