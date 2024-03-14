@@ -32,6 +32,11 @@ def detect_easyocr(language): # # Using default model
                     model_storage_directory='EasyOCR/model_kor',
                     user_network_directory='EasyOCR/user_network_dir',
                     recog_network='custom')
+    elif language == 'en':
+        reader = Reader(['en'], gpu=False,
+                    model_storage_directory='EasyOCR/model_en',
+                    user_network_directory='EasyOCR/user_network_dir',
+                    recog_network='custom')
 
     files, count = get_files('EasyOCR/demo_images')
     result_set = []
