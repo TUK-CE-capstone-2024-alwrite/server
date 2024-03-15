@@ -14,6 +14,6 @@ def detect_kor() -> str:
     return result
 
 @detect_bp.route('/en', methods=['POST'])
-def detect_kor() -> str:
+def detect_en() -> str:
     result = detect(language='en')
     return result
