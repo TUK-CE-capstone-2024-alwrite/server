@@ -1,5 +1,6 @@
 from .easyocr import *
 import os
+from flask import jsonify
 # GPU 설정
 #os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
 
@@ -33,7 +34,7 @@ def detect_easyocr(language): # # Using default model
                     user_network_directory='EasyOCR/user_network_dir',
                     recog_network='custom')
     elif language == 'en':
-        reader = Reader(['en'], gpu=False,
+        reader = Reader(['ko','en'], gpu=False,
                     model_storage_directory='EasyOCR/model_en',
                     user_network_directory='EasyOCR/user_network_dir',
                     recog_network='custom')
@@ -46,16 +47,18 @@ def detect_easyocr(language): # # Using default model
         filename = os.path.basename(file)
 
         result = reader.readtext(file)
+        # print(jsonify({"result": result}))
         for (bbox, string, confidence) in result:
             
             bbox = [[int(x) for x in point] for point in bbox]
 
-            print("filename: '%s', confidence: %.4f, string: '%s', bbox: %s" % (filename, confidence, string, bbox))
+            #print("filename: '%s', confidence: %.4f, string: '%s', bbox: %s" % (filename, confidence, string, bbox))
             result_set.append({
                 'filename': filename,
                 'confidence': float(confidence),  # Convert confidence to float
                 'string': string,
                 'bbox': bbox
             })
+
 
     return result_set
