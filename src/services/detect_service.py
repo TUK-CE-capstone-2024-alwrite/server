@@ -16,7 +16,7 @@ def detect(language: str) -> str:
     try:
         file = request.files['file']
     except:
-        return jsonify({'error': '파일 수신 실패'})
+        return jsonify({'error': '파일 수신 실패','isSuccess' : 0})
     
     # 저장 폴더 비우기
     # 실패시 애러 메시지 반환
@@ -30,7 +30,7 @@ def detect(language: str) -> str:
                 shutil.rmtree(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
-            return jsonify({'error': '이미지 인식 오류'})
+            return jsonify({'error': '이미지 인식 오류', 'isSuccess' : 0})
     
     # 파일 저장
     file.save(folder + secure_filename(file.filename))
@@ -38,5 +38,6 @@ def detect(language: str) -> str:
     # 수신 받은 파일 텍스트 변환
     result = easyocr(language)
     result = detect_service.detect_route(result)
+    # result.append({'isSuccess' : 1})
     
-    return jsonify(result)
+    return jsonify({"result" : result, 'isSuccess' : 1})
