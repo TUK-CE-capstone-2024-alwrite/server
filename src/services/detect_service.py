@@ -17,7 +17,6 @@ def detect(language: str) -> str:
         file = request.files['file']
     except:
         return jsonify({'error': '파일 수신 실패','isSuccess' : 0})
-    
     # 저장 폴더 비우기
     # 실패시 애러 메시지 반환
     folder = 'EasyOCR/demo_images/'
