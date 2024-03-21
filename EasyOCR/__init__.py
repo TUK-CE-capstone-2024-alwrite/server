@@ -1,2 +1,0 @@
-from EasyOCR.easyocr import *
-
