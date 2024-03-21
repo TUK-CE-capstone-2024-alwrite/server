@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask import jsonify
 from werkzeug.utils import secure_filename
-from EasyOCR.run import detect_easyocr as easyocr
+from src.EasyOCR.run import detect_easyocr as easyocr
 import os
 import json
 import src.services.detect_service as detect_service
@@ -19,7 +19,7 @@ def detect(language: str) -> str:
         return jsonify({'error': '파일 수신 실패','isSuccess' : 0})
     # 저장 폴더 비우기
     # 실패시 애러 메시지 반환
-    folder = 'EasyOCR/demo_images/'
+    folder = 'src/EasyOCR/demo_images/'
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
