@@ -2,7 +2,6 @@ click
 flask_cors
 itsdangerous
 MarkupSafe
-uWSGI
 Werkzeug
 opencv-python-headless
 scipy
@@ -14,3 +13,4 @@ PyYAML
 Shapely
 pyclipper
 pyrebase
+gunicorn
