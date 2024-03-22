@@ -3,16 +3,25 @@ version: "3.7"
 services:
   flask:
     build: ./src
-    container_name: src
+    container_name: flask
+    hostname: flask
     restart: always
     environment:
       - APP_NAME=src
-    expose:
-      - 5000
+    ports:
+      - "8000:8000"
+    command: gunicorn -b 0.0.0.0:8000 src.__init__:app
+    networks:
+      - default
 
   nginx:
     build: ./nginx
     container_name: nginx
+    hostname: nginx
     restart: always
     ports:
-      - "80:80"
+      - "0.0.0.0:8080:8080"
+    networks:
+      - default
+    depends_on:
+      - flask
