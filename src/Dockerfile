@@ -1,8 +1,10 @@
 FROM python:3
 
-WORKDIR /
 
-ADD . /src
+RUN mkdir /src
+COPY requirements.txt /
 RUN pip install -r requirements.txt
-
-CMD ["uwsgi","uwsgi.ini"]
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+COPY . /src
+WORKDIR /
+RUN export FLAKS_APP=src
