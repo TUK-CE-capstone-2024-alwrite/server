@@ -35,4 +35,3 @@ dist-ssr
 *.sw?
 .env
 
-src/EasyOCR/demo_images/*
