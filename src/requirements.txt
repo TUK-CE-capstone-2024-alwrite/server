@@ -1,11 +1,8 @@
 click
-Flask
+flask_cors
 itsdangerous
 MarkupSafe
-uWSGI
 Werkzeug
-torch
-torchvision
 opencv-python-headless
 scipy
 numpy
@@ -15,5 +12,5 @@ python-bidi
 PyYAML
 Shapely
 pyclipper
-ninja
 pyrebase
+gunicorn
