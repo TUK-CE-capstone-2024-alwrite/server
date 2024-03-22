@@ -1,4 +1,4 @@
-from .controllers.detect_controllers import detect_bp
+from src.controllers.detect_controllers import detect_bp
 
 # routes.py 또는 routes_list 함수
 def routes_list(app):
