@@ -21,16 +21,17 @@ def detect(language: str) -> str:
     # 실패시 애러 메시지 반환.
     folder = 'src/EasyOCR/demo_images/'
     for filename in os.listdir(folder):
-        file_path = os.path.join(folder, filename)
-        try:
-            if os.path.isfile(file_path) or os.path.islink(file_path):
-                os.unlink(file_path)
-            elif os.path.isdir(file_path):
-                shutil.rmtree(file_path)
-        except Exception as e:
-            print('Failed to delete %s. Reason: %s' % (file_path, e))
-            return jsonify({'error': '이미지 인식 오류', 'isSuccess' : 0})
-    
+        if filename != '.gitkeep':
+            file_path = os.path.join(folder, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
+                return jsonify({'error': '이미지 인식 오류', 'isSuccess' : 0})
+        
     # 파일 저장
     file.save(folder + secure_filename(file.filename))
     
