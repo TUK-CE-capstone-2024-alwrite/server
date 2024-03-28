@@ -14,3 +14,4 @@ Shapely
 pyclipper
 pyrebase
 gunicorn
+fastai

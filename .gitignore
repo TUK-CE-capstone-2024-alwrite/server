@@ -34,4 +34,5 @@ dist-ssr
 *.sln
 *.sw?
 .env
-
+src/EasyOCR/demo_images/*.jpg
+src/EasyOCR/demo_images/*.png
