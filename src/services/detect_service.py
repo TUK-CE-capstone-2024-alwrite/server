@@ -8,6 +8,21 @@ import os
 import json
 import src.services.detect_service as detect_service
 
+def empty_folder(folder: str) -> None:
+    # 저장 폴더 비우기
+    # 실패시 애러 메시지 반환.
+    for filename in os.listdir(folder):
+        if filename != '.gitkeep':
+            file_path = os.path.join(folder, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print('Failed to delete %s. Reason: %s' % (file_path, e))
+                return jsonify({'error': '이미지 인식 오류', 'isSuccess' : 0})
+
 
 def detect_route(data: str) -> str:
     return data
@@ -22,17 +37,7 @@ def detect(language: str) -> str:
     # 저장 폴더 비우기
     # 실패시 애러 메시지 반환.
     folder = 'src/EasyOCR/demo_images/'
-    for filename in os.listdir(folder):
-        if filename != '.gitkeep':
-            file_path = os.path.join(folder, filename)
-            try:
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.unlink(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print('Failed to delete %s. Reason: %s' % (file_path, e))
-                return jsonify({'error': '이미지 인식 오류', 'isSuccess' : 0})
+    empty_folder(folder)
         
     # 파일 저장
     file.save(folder + secure_filename(file.filename))
@@ -44,7 +49,7 @@ def detect(language: str) -> str:
     
     return jsonify({"result" : result, 'isSuccess' : 1})
 
-def predict():
+def predict() -> str:
     engine = PredictionEngine()
     # 파일 수신
     # 실패시 애러 메시지 반환
@@ -54,16 +59,8 @@ def predict():
         return jsonify({'error': '파일 수신 실패','isSuccess' : 0})
     
     folder = 'src/EasyOCR/demo_images/'
-    for filename in os.listdir(folder):
-        file_path = os.path.join(folder, filename)
-        try:
-            if os.path.isfile(file_path) or os.path.islink(file_path):
-                os.unlink(file_path)
-            elif os.path.isdir(file_path):
-                shutil.rmtree(file_path)
-        except Exception as e:
-            print('Failed to delete %s. Reason: %s' % (file_path, e))
-            return jsonify({'error': '이미지 인식 오류', 'isSuccess' : 0})
+    empty_folder(folder)
+    
     # 파일 저장
     file_path = os.path.join(folder, secure_filename(file.filename))
     file.save(file_path)
