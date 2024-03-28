@@ -26,7 +26,7 @@ class PredictionEngine:
 
     def __init__(self):
         self.model = Model()
-        load_model("C:/minji/english-handwriting-recognition/models/eng_handwriting_recog.pth", self.model, opt=None, with_opt=False)
+        load_model("src/EasyOCR/model_minji/eng_handwriting_recog.pth", self.model, opt=None, with_opt=False)
 
     def predict_one(self, img):
         """Predict text from an image of a single word."""
@@ -59,11 +59,3 @@ class PredictionEngine:
         text = self.predict_all(to_predict)
         return text
 
-
-if __name__ == "__main__":
-    import cv2
-
-    engine = PredictionEngine()
-    img = cv2.imread("C:/minji/english-handwriting-recognition/data/little_prince.jpg")
-    text = engine.predict_image(img, "paragraph")
-    print(text)
