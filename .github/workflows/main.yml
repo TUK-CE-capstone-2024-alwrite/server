@@ -18,6 +18,5 @@ jobs:
         port: 22
         script: |
             cd server
-            echo killing old docker processes
             docker-compose rm -fs
             docker-compose up --build -d
