@@ -10,7 +10,7 @@ def create_app():
 
     @app.route('/')
     def test():
-        return 'dev test'
+        return 'test'
 
     return app
 
