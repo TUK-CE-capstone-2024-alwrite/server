@@ -19,6 +19,5 @@ jobs:
           script: |
             cd server
             git pull origin main
-            git submodule update --init --recursive
             docker-compose rm -fs
             docker-compose up --build -d
