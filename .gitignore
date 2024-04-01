@@ -36,3 +36,6 @@ dist-ssr
 .env
 src/EasyOCR/demo_images/*.jpg
 src/EasyOCR/demo_images/*.png
+src/speach_file/*.wav
+src/speach_file/*.mp3
+src/speach_file/*.mp4
