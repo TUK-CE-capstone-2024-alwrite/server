@@ -1,3 +1,3 @@
 [submodule "secret_info"]
-	path = secret_info
+	path = src/secret_info
 	url = https://github.com/TUK-CE-capstone-2024-alwrite/secret_info.git
