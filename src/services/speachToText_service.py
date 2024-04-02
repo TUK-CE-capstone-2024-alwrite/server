@@ -123,7 +123,7 @@ def speachToText() -> str:
     
     # 인증 파일 읽기
     try:
-        with open('secret_info/authentication/vito_auth.json') as f:
+        with open('src/secret_info/authentication/vito_auth.json') as f:
             config = json.load(f)
     except FileNotFoundError as e:
         print(e)
