@@ -26,7 +26,8 @@ class PredictionEngine:
 
     def __init__(self):
         self.model = Model()
-        load_model("C:/minji/english-handwriting-recognition/models/eng_handwriting_recog.pth", self.model, opt=None, with_opt=False)
+
+        load_model("src/EasyOCR/model_minji/model_3rd.pth", self.model, opt=None, with_opt=False)
 
     def predict_one(self, img):
         """Predict text from an image of a single word."""
@@ -48,6 +49,8 @@ class PredictionEngine:
         Perfrom correct transformation and predict text from an image,
         taking its type into account.
         """
+        # 52번 코드 로컬에서 실행할 때는 주석처리해야함. flask로 실행 시에만 함께 돌릴 것.
+        # 로컬에서 돌릴 때는 main에서 시작하는데, flask로 실행하면 service에서 바로 호출하기 때문에.
         img = cv2.imread(img)
         if img_type == "paragraph":
             to_predict = words_from_image(img)
@@ -64,6 +67,6 @@ if __name__ == "__main__":
     import cv2
 
     engine = PredictionEngine()
-    img = cv2.imread("C:/minji/english-handwriting-recognition/data/little_prince.jpg")
+    img = cv2.imread("C:/minji/english-handwriting-recognition/data/hello.jpg")
     text = engine.predict_image(img, "paragraph")
     print(text)
