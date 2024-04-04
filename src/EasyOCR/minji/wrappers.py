@@ -1,8 +1,7 @@
 from Levenshtein import distance  # type: ignore
 
-from model import Model
-from dataset import int_dict
-
+from src.EasyOCR.minji.model import Model
+from src.EasyOCR.minji.dataset import int_dict
 
 class CTCWrapper:
     """

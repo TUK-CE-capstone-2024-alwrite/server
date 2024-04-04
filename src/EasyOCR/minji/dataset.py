@@ -7,7 +7,8 @@ from torchvision import transforms
 
 from src.EasyOCR.minji.transform import Resize, Blur, ToGray
 
-
+#WORDS_FILE, WORDS_FOLDER는 로컬에서 지정.
+#IAM_DATASET사용. 인쇄체 이미지도 같이 학습시키면 정확도 향상함.
 WORDS_FILE = "C:/minji/english-handwriting-recognition/src/data/words.txt"
 WORDS_FOLDER = "C:/minji/english-handwriting-recognition/src/data/words"
 CHARS = (
@@ -44,6 +45,7 @@ def read_data(words_file=WORDS_FILE, words_folder=WORDS_FOLDER):
                 name = split[0]
                 if name not in broken_iam_files:
                     full_path = os.path.join(words_folder, name + ".png")
+                    #full_path = os.path.join(words_folder, name + ".jpg")
                     paths_list.append(full_path)
                     words_list.append(split[-1])
     return paths_list, words_list
@@ -110,9 +112,6 @@ def train_test_data(split=0.95, composed_transforms=None):
 
     train_size = round(split * len(dataset))
     val_size = round((1 - split) * len(dataset))
-    
-    print("train_size", train_size)
-    print("val_size", val_size)
 
     train_subset, val_subset = random_split(
         dataset,
