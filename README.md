@@ -15,7 +15,7 @@
 <div align="center">
 
 | **오하민** | **김민지** |
-| :------: |  
+| :------: | :------: |
 | [<img width="140px" src="https://avatars.githubusercontent.com/u/113972482?v=4" height=150 width=150> <br/> @ohamin26](https://github.com/ohamin26) | [<img width="140px" src="https://avatars.githubusercontent.com/u/102501739?v=4" height=150 width=150> <br/> @min9-525](https://github.com/min9-525) |
 
 </div>
