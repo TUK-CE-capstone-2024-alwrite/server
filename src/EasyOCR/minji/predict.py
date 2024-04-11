@@ -26,7 +26,7 @@ class PredictionEngine:
 
     def __init__(self):
         self.model = Model()
-        load_model("src/EasyOCR/model_minji/eng_handwriting_recog.pth", self.model, opt=None, with_opt=False)
+        load_model("src/EasyOCR/model_minji/model_3rd.pth", self.model, opt=None, with_opt=False)
 
     def predict_one(self, img):
         """Predict text from an image of a single word."""
