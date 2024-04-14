@@ -24,26 +24,21 @@ def text_summary() -> str:
 
 @text_summary_bp.route('/summary', methods=['POST'])
 def openai_summary():
-    try:
-        # text_summary 함수 호출하여 음성 파일을 텍스트로 변환한 결과 받아오기
-        response = speachToText()
-        
-        # 변환 성공 여부 확인
-        if response['isSuccess'] == 0:
-            # 변환 실패 시 에러 메시지 반환
-            return jsonify(response)
-        
-        # 텍스트 추출
-        text = response['result']
-        
-        # OpenAI를 사용하여 텍스트 요약
-        summary_text = summarize_text(text)
-        
-        # 요약 결과 반환
-        return jsonify({'summary': summary_text})
+    # text_summary 함수 호출하여 음성 파일을 텍스트로 변환한 결과 받아오기
+    response = speachToText()
     
-    except Exception as e:
-        # 예외 처리: 요약 실패 시
-        print(e)
-        return jsonify({"error": "openai_summary_error"})
+    # 텍스트 추출
+    text = response['result']
+    
+    # OpenAI를 사용하여 텍스트 요약
+    summary_text = summarize_text(text)
+    
+    # 변환 성공 여부 확인
+    if response['isSuccess'] == 0:
+        # 변환 실패 시 에러 메시지 반환
+        return jsonify(response)
+    
+    # 요약 결과 반환
+    return jsonify(summary_text)
+
 
