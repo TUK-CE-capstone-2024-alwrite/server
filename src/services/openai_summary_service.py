@@ -23,12 +23,12 @@ def summarize_text(text):
         
         # 선택지가 있는지 확인합니다.
         if summary_text:
-            return summary_text
+            return {'summary_text' : summary_text, 'isSuccess' : 1}
         else:
-            return {"error": "No choices found in response"}
+            return {"error": "response안에서 choice불가능.", 'isSuccess' : 0}
 
     except Exception as e:
-        error_message = {"error": str(e)}
+        error_message = {"error": str(e),'isSuccess' : 0}
         print(e)
         return error_message
 
