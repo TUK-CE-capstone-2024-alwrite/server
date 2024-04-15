@@ -39,3 +39,7 @@ src/EasyOCR/demo_images/*.png
 src/speach_file/*.wav
 src/speach_file/*.mp3
 src/speach_file/*.mp4
+src/speach_file/*.m4a
+src/speach_file/*.avi
+src/speach_file/*.mov
+src/speach_file/*.wmv
