@@ -6,6 +6,7 @@ COPY requirements.txt /
 RUN pip install -r requirements.txt
 RUN pip install fastai
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+RUN pip install openai
 COPY . /src
 WORKDIR /
 RUN export FLAKS_APP=src
