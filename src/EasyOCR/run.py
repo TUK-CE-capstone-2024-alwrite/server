@@ -48,17 +48,17 @@ def detect_easyocr(language): # # Using default model
 
         result = reader.readtext(file)
         # print(jsonify({"result": result}))
+         # 이미지에서 감지된 각 단어에 대해 문자열로 변환
+        words = []  # 단어들을 저장할 리스트
         for (bbox, string, confidence) in result:
-            
-            bbox = [[int(x) for x in point] for point in bbox]
+            words.append(string)
 
-            #print("filename: '%s', confidence: %.4f, string: '%s', bbox: %s" % (filename, confidence, string, bbox))
-            result_set.append({
-                'filename': filename,
-                'confidence': float(confidence),  # Convert confidence to float
-                'string': string,
-                'bbox': bbox
-            })
+        # 감지된 단어들을 하나의 문장으로 합치고 결과에 추가
+        sentence = ' '.join(words)
+        result_set.append({
+            'filename': filename,
+            'string': sentence
+        })
 
 
     return result_set
